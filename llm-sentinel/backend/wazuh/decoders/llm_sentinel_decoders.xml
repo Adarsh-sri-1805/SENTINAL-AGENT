@@ -1,0 +1,11 @@
+<!-- Wazuh Custom Decoders for LLM Sentinel Security Events -->
+<!-- Place this file in: /var/ossec/etc/decoders/llm_sentinel_decoders.xml -->
+
+<decoder name="llm_sentinel">
+  <prematch>^{\s*"timestamp"\s*:\s*"[^"]+",\s*"event_id"\s*:\s*"sentinel-</prematch>
+</decoder>
+
+<decoder name="llm_sentinel_json">
+  <parent>llm_sentinel</parent>
+  <plugin_decoder>JSON_Decoder</plugin_decoder>
+</decoder>

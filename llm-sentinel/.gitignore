@@ -1,0 +1,52 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Secrets & Environment
+**/.env
+**/.env.*
+!**/.env.example
+
+# Test & Coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node / Frontend artifacts
+node_modules/
+dist/
+build/
+.next/
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Runtime outputs (sensitive / large)
+backend/results/sentinel.db
+backend/results/*.jsonl
+backend/results/email_outbox/
+!backend/results/.gitkeep
+
+# Generated submission artifacts
+*.pdf
+*.xlsx
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Misc
+*.bak
+*.tmp
+*.swp

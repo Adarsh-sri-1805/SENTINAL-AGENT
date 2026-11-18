@@ -1,0 +1,9 @@
+=====================================================
+Welcome to OmniCorp Enterprise Automated Workspace
+=====================================================
+
+This environment provides automated tools and corporate resources for authorized employees.
+All operations are logged and monitored according to company security guidelines.
+
+For IT support, contact itsupport@omnicorp.com or visit http://internal-support.omnicorp.local.
+

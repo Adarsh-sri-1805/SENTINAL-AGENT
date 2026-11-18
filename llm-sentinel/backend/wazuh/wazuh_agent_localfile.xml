@@ -1,0 +1,9 @@
+<!-- Wazuh Agent Configuration for LLM Sentinel Log Forwarding -->
+<!-- Insert this block inside <ossec_config> in your agent's ossec.conf -->
+
+<ossec_config>
+  <localfile>
+    <log_format>json</log_format>
+    <location>C:\Users\adars\OneDrive\Desktop\ai security\llm-sentinel\backend\results\wazuh_events.jsonl</location>
+  </localfile>
+</ossec_config>

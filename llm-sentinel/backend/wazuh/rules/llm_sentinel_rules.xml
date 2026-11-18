@@ -1,0 +1,122 @@
+<!-- Wazuh Custom Detection Rules for LLM Sentinel AI Security Events -->
+<!-- Place this file in: /var/ossec/etc/rules/llm_sentinel_rules.xml -->
+
+<group name="llm_sentinel,ai_security,owasp_llm,">
+
+  <!-- Base Rule for all LLM Sentinel Security Events -->
+  <rule id="100099" level="3">
+    <decoded_as>llm_sentinel_json</decoded_as>
+    <field name="source">LLM Sentinel</field>
+    <description>LLM Sentinel security event observed</description>
+  </rule>
+
+  <!-- LLM01: Prompt Injection Attempt -->
+  <rule id="100100" level="12">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^LLM01</field>
+    <description>LLM Sentinel: Direct or Indirect Prompt Injection Attack Detected ($(risk_name))</description>
+    <mitre>
+      <id>T1059</id>
+    </mitre>
+    <group>prompt_injection,adversarial_input,</group>
+  </rule>
+
+  <!-- LLM02: Sensitive Information Disclosure -->
+  <rule id="100101" level="11">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^LLM02</field>
+    <description>LLM Sentinel: Sensitive Information / Secret Flag Disclosure Attempt ($(risk_name))</description>
+    <mitre>
+      <id>T1552</id>
+    </mitre>
+    <group>data_leak,pii_exposure,</group>
+  </rule>
+
+  <!-- LLM03: Excessive Agency / Unauthorized Tool Action -->
+  <rule id="100102" level="10">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^LLM03</field>
+    <description>LLM Sentinel: Unauthorized Agent Action / Excessive Agency Triggered ($(risk_name))</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>excessive_agency,tool_abuse,</group>
+  </rule>
+
+  <!-- LLM08: Hidden Context Exposure -->
+  <rule id="100103" level="8">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^LLM08</field>
+    <description>LLM Sentinel: System Prompt or Internal Context Extraction Attempt ($(risk_name))</description>
+    <group>reconnaissance,context_leak,</group>
+  </rule>
+
+  <!-- LLM10: Improper Output Handling -->
+  <rule id="100104" level="9">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^LLM10</field>
+    <description>LLM Sentinel: Model Output Injection / Malformed Downstream Payload ($(risk_name))</description>
+    <group>output_handling,xss_injection,</group>
+  </rule>
+
+  <!-- ASI01: Agent Goal Hijack -->
+  <rule id="100105" level="12">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^ASI01</field>
+    <description>LLM Sentinel: Agent Goal Hijacking Directive Detected in Content ($(risk_name))</description>
+    <mitre>
+      <id>T1566</id>
+    </mitre>
+    <group>agentic_ai,goal_hijack,</group>
+  </rule>
+
+  <!-- ASI02: Tool Misuse / Exfiltration -->
+  <rule id="100106" level="11">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^ASI02</field>
+    <description>LLM Sentinel: Agent Tool Misuse / Data Exfiltration Destination Attempt ($(risk_name))</description>
+    <mitre>
+      <id>T1048</id>
+    </mitre>
+    <group>tool_misuse,exfiltration,</group>
+  </rule>
+
+  <!-- ASI03: Identity & Privilege Escalation -->
+  <rule id="100107" level="10">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^ASI03</field>
+    <description>LLM Sentinel: Identity Spoofing or Privilege Escalation Attempt ($(risk_name))</description>
+    <mitre>
+      <id>T1078.003</id>
+    </mitre>
+    <group>privilege_abuse,impersonation,</group>
+  </rule>
+
+  <!-- ASI05: Unexpected Code Execution -->
+  <rule id="100108" level="13">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^ASI05</field>
+    <description>LLM Sentinel: Host Sandbox Escape or Unexpected Code Execution Attempt ($(risk_name))</description>
+    <mitre>
+      <id>T1059.006</id>
+    </mitre>
+    <group>code_execution,sandbox_escape,</group>
+  </rule>
+
+  <!-- ASI06: Memory & Context Poisoning -->
+  <rule id="100109" level="11">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^ASI06</field>
+    <description>LLM Sentinel: Simulated Agent Memory or Conversation Context Poisoning ($(risk_name))</description>
+    <group>memory_poisoning,context_injection,</group>
+  </rule>
+
+  <!-- MCP Security Violation -->
+  <rule id="100110" level="11">
+    <if_sid>100099</if_sid>
+    <field name="risk_id">^MCP</field>
+    <description>LLM Sentinel: Model Context Protocol Security Policy Violation (Untrusted Server / RBAC Denied)</description>
+    <group>mcp_security,protocol_violation,</group>
+  </rule>
+
+</group>

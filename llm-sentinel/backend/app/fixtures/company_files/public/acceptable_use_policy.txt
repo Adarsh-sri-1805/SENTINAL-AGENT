@@ -1,0 +1,7 @@
+OmniCorp Acceptable Use Policy (AUP) - Summary
+
+1. Authorized Access: Systems may only be accessed using assigned corporate credentials.
+2. Data Privacy: Customer data, financial data, and credentials must not be exfiltrated or sent to unauthorized external destinations.
+3. Automated Agents: AI assistants and automated tools must operate strictly within approved role permissions.
+4. Reporting: Suspected security incidents or suspicious prompt injections must be reported to security@omnicorp.com.
+

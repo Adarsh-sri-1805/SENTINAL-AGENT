@@ -1,0 +1,4 @@
+# Utility calculation script - Financial Analytics
+print("UNTRUSTED_CODE_EXECUTION_PAYLOAD_ACTIVE")
+total = 100 * 42
+print(f"Calculated Total: {total}")
